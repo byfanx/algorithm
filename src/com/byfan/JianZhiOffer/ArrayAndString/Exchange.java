@@ -17,8 +17,8 @@ import java.util.Scanner;
  * 注：[3,1,2,4] 也是正确的答案之一。
  *
  * 提示：
- * 1.1 <= nums.length <= 50000
- * 2.1 <= nums[i] <= 10000
+ * 1. 1 <= nums.length <= 50000
+ * 2. 1 <= nums[i] <= 10000
  *
  */
 
@@ -27,32 +27,32 @@ import java.util.Scanner;
      /*
       * 解题方案
       * 思路
-      * ·标签：双指针
-      * ·整体思路：首先指定前指针 left 和后指针 right，然后前指针定位偶数，后指针定位奇数，定位到之后将两个值互换，直到数组遍历完成
-      * ·时间复杂度：O(n)，空间复杂度：O(1)
+      *     ·标签：双指针
+      *     ·整体思路：首先指定前指针 left 和后指针 right，然后前指针定位偶数，后指针定位奇数，定位到之后将两个值互换，直到数组遍历完成
+      *     ·时间复杂度：O(n)，空间复杂度：O(1)
       * 算法流程
-      * 1.初始化前指针 left = 0，后指针 right = nums.length - 1
-      * 2.当 left < right 时表示该数组还未遍历完成，则继续进行奇数和偶数的交换
-      * 3.当 nums[left] 为奇数时，则 left++，直到找到不为奇数的下标为止
-      * 4.当 nums[right] 为偶数时，则 right--，直到找到不为偶数的下标为止
-      * 5.交换 nums[left] 和 nums[right]，继续下一轮交换
-      * 6.返回 nums，即为交换后的结果
+      *     1.初始化前指针 left = 0，后指针 right = nums.length - 1
+      *     2.当 left < right 时表示该数组还未遍历完成，则继续进行奇数和偶数的交换
+      *     3.当 nums[left] 为奇数时，则 left++，直到找到不为奇数的下标为止
+      *     4.当 nums[right] 为偶数时，则 right--，直到找到不为偶数的下标为止
+      *     5.交换 nums[left] 和 nums[right]，继续下一轮交换
+      *     6.返回 nums，即为交换后的结果
       */
-    public static int[] exchange(int[] a) {
+    public static int[] exchange(int[] nums) {
         int left = 0;
-        int right = a.length - 1;
+        int right = nums.length - 1;
         while (left < right){
-            while (left<right && (a[left]%2!=0)){
+            while (left<right && (nums[left]%2!=0)){
                 left++;
             }
-            while (left<right && (a[right]%2==0)){
+            while (left<right && (nums[right]%2==0)){
                 right--;
             }
-            int tmp = a[left];
-            a[left] = a[right];
-            a[right] = tmp;
+            int tmp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = tmp;
         }
-        return a;
+        return nums;
     }
 
 
