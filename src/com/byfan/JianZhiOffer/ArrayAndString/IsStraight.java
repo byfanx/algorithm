@@ -28,7 +28,63 @@ import java.util.Scanner;
  */
 public class IsStraight {
 
+    /**
+     * 解题方案
+     * 思路
+     * ·标签：数组
+     * ·整体思路：
+     *      ·需要对数组升序排序
+     *      ·如果数组中有重复数据，则返回 false
+     *      ·令 minVal 为不包含大小王的最小值，maxVal 为不包含大小王的最大值。如果 maxVal-minVal > 5，则返回 false
+     * ·复杂度：
+     *      ·时间复杂度 O(Nlog N)
+     *      ·空间复杂度 O(1)
+     * 算法流程
+     * 1、顺子牌的定义
+     * ·牌数量为 5
+     * ·牌间的顺序为递增，且差值为 1
+     * ·牌间不可以有重复数据，（大小王除外）。（扑克牌术语：如果一副牌里含有对子，则不可能是顺子）
+     * ·大小王可以作为任意牌，即可以作为牌间空隙插入。且数量不限
+     * ·牌之间的空隙个数为，maxVal-minVal
+     * ·
+     * 2、
+     * 1.对数组进行从小到大排序。
+     * 2.遍历数组，统计0的个数。如果当前不是数组最后一位数，则判断当前数和下一位是否相等，如果相等则直接返回false。
+     * 3.minVal是数组中角标为0的个数的数字，maxVal是数组的最后一位数，返回maxVal-minVal<5的结果。
+     * 4.由于牌数量为 5，如果是顺子，就一定有maxVal-minVal < 5。否则就不是顺子。
+     *
+     * @param nums
+     * @return
+     */
     public static boolean isStraight(int[] nums){
+        Arrays.sort(nums);
+        int zero_count = 0;
+        for (int i=0;i<nums.length;i++){
+            if (nums[i] == 0){
+                zero_count++;
+                continue;
+            }
+            if (i != nums.length-1){
+                if (nums[i] == nums[i+1]){
+                    return false;
+                }
+            }
+        }
+        return nums[nums.length-1] - nums[zero_count] < 5;
+    }
+
+
+    /**
+     * 思路：
+     * ·首先先对数组进行排序，然后统计出0的个数。
+     * ·之后遍历0之后的数组部分，如果当前数与前一个数相等，返回false；否则0的个数变成当前0的个数减去当前数与前一个数的差再减一。就是看两个数之间需要几个0去补充
+     * ·之后判断当0的个数小于0个之后，则返回false
+     * ·最后0的个数大于等于0那么返回true
+     *
+     * @param nums
+     * @return
+     */
+    public static boolean myIsStraight(int[] nums){
         Arrays.sort(nums);
         int zero_count = 0;
         int i = 0;
@@ -57,6 +113,6 @@ public class IsStraight {
         for (int i=0;i<nums.length;i++){
             nums[i] = scanner.nextInt();
         }
-        System.out.println(isStraight(nums));
+        System.out.println(myIsStraight(nums));
     }
 }

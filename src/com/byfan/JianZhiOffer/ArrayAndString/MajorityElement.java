@@ -1,7 +1,7 @@
 package com.byfan.JianZhiOffer.ArrayAndString;
 
 /**
- * @Description:
+ * @Description: 寻找过半数字
  * @Author: byfan
  * @Date: 2021/12/21 21:48
  */
@@ -48,7 +48,7 @@ public class MajorityElement {
                 resKey = key;
             }
         }
-        return map.get(resKey);
+        return resKey;
     }
 
     // 摩尔投票（最优解）
