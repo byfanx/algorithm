@@ -29,7 +29,7 @@ public class MinRotateArray {
      * ·整体思路：首先数组是一个有序数组的旋转，从这个条件可以看出，数组是有大小规律的，可以使用二分查找利用存在的规律快速找出结果
      * ·时间复杂度：O(logn)，空间复杂度：O(1)
      * 算法流程
-     * 1.初始化下标 left 和 right
+     * 1.初始化下标 left=0 和 right=nums.length-1。
      * 2.每次计算中间下标 mid = (right + left) / 2，这里的除法是取整运算，不能出现小数
      * 3.当 numbers[mid] < numbers[right] 时，说明最小值在 [left, mid] 区间中，则令 right = mid，用于下一轮计算
      * 4.当 numbers[mid] > numbers[right] 时，说明最小值在 [mid, right] 区间中，则令 left = mid + 1，用于下一轮计算
